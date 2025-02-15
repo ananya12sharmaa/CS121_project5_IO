@@ -1,57 +1,47 @@
-//class project5 
-//fileIO.cpp
+//Project5 I/O file
+//due Friday Feb14
 
-#include <fstream>
 #include <iostream>
+#include <fstream>
+#include <sstream>
 #include <string>
 
-int main(){
-
-  //opening a file for output
-  std::ofstream outFile;
-  outFile.open("example.dat");
-  if (outFile.is_open()){
-    outFile << "eggs" << std::endl;
-    outFile << "milk" << std::endl;
-    outFile << "bread" << std::endl;
-    outFile.close();
-  } else {
-    std::cout << "unable to open file" << std::endl;
-  } // end if
-
-  //appending to a file
-  std::ofstream appFile;
-  appFile.open("example.dat", std::ios::app);
-  appFile << "chips" << std::endl;
-  appFile.close();
-
-  //reading from a file
-  std::ifstream inFile;
-  inFile.open("example.dat");
-  std::string item;
-  while (!inFile.eof()){
-    std::getline(inFile, item);
-    if (item != ""){
-      std::cout << "We need " << item << ", Dude." << std::endl;
-    } // end if
-  } // end while
-  inFile.close();
-
-
-  //alternate input
-  inFile.open("example.dat");
-  
-  // getline returns false at end of file...
-  // This line both reads in the current line and
-  // acts as a condition
-
-  while (getline(inFile, item)){
-    std::cout << "Now we need " << item << std::endl;
-  } // end while
-  inFile.close();
-
-
-  return 0;
-
-} // end main
-
+//standard main
+int main() 
+{
+    std::ifstream inFile("data.csv"); // Opening the file
+    std::string currentLine;
+    std::stringstream converter;
+    std::string num1, num2, text;
+    int one, two;//declaration
+    
+    while (std::getline(inFile, currentLine))//while loop to get each line as needed where getline has a boolean returntype 
+    {
+        converter.clear();//not interferring with older data, if any
+        converter.str(currentLine);
+        
+        std::getline(converter, num1, ',');
+        std::getline(converter, num2, ',');
+        std::getline(converter, text);
+        
+        converter.clear();
+        converter.str(num1);
+        converter >> one; // Convert using stringstream
+        
+        converter.clear();
+        converter.str(num2);
+        converter >> two; // Convert using stringstream
+        
+        int sum = one + two;
+        
+	//for loop for printing the text string the desired number of times
+        for (int i = 0; i < sum; i++) 
+	{
+            std::cout << text << " ";
+        }//for loop closed
+        std::cout << std::endl;//change to new line
+    }//while loop close
+    
+    inFile.close(); // Close the file
+    return 0;// ensuring successful execution of the file
+}//main closed
