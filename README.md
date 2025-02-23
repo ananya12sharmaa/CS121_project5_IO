@@ -62,7 +62,7 @@ start the main function definition
 - [x] parallels between fstream iostream
 - [x] execute a new concept in a cool way
 
-![https://cplusplus.com/reference/iostream/fstream/]
+[[![https://cplusplus.com/reference/io(https://cplusplus.com/img/iostream.gif)](https://cplusplus.com/img/iostream.gif)
 
 *Making pseudocode was fun. Thank you for feedback Nolan :tada:.*
 
