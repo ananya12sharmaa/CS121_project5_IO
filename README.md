@@ -62,4 +62,6 @@ start the main function definition
 - [x] parallels between fstream iostream
 - [x] execute a new concept in a cool way 
 
+*Making pseudocode was fun. Thank you for feedback Nolan :tada:.*
 
+*Document created with <3 by Ananya Sharma.*
